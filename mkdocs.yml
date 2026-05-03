@@ -1,26 +1,68 @@
-site_name: Notes - Qihang's Blog
+site_name: Notes | Qihang's Blog
 site_url: https://notes.yangqihang.dev
 site_author: Yang Qihang
+# repo_url: https://github.com/yang-qihang/my-blog-subsite-notes
+# repo_name: my-blog-subsite-notes
 
 theme:
   name: material
   icon:
-    logo: material/console
+    logo: material/notebook
   features:
     - navigation.tabs
     - navigation.expand # Makes sidebar folders default to open
+# Fixes the nested hierarchy:
+# clicking 'Tooling' opens cs/tooling/index.md
+    - navigation.indexes
+    - content.code.copy  # <--- Add this line here
+    - navigation.path     # <--- Adds a breadcrumb trail (e.g., CS > Tooling > Git) at the top of the page
+#    - navigation.footer   # <--- Adds explicit "Previous" and "Next" buttons at the bottom of the page
+
+validation:
+  nav:
+    omitted_files: ignore
 
 markdown_extensions:
-  - pymdownx.superfences
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
   - pymdownx.highlight:
       anchor_linenums: true
       line_spans: __span
       pygments_lang_class: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+extra_javascript:
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
 
 nav:
-  - Computer Science:
-    - Tooling: cs/tooling/index.md
-    - Programming: cs/programming/index.md
-    - Theory: cs/theory/index.md
-  - Mathematics: math/index.md
+  - Home: index.md
+  - CS:
+    - Tooling:
+      - cs/tooling/index.md
+      - Git: cs/tooling/git/index.md
+      - Make: cs/tooling/make/index.md
+      - Vim: cs/tooling/vim/index.md
+    - Programming:
+      - cs/programming/index.md
+      - C: cs/programming/c/index.md
+    - Theory:
+      - cs/theory/index.md
+      - Digital Circuit: cs/theory/digital-circuits/index.md
+  - Math:
+      - math/index.md
+      - Discrete Math: math/discrete-math/index.md
   - Back to Mainsite: https://yangqihang.dev

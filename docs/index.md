@@ -1,23 +1,36 @@
-# Qihang's Notes Subsite
+---
+hide:
+  - navigation
+  - toc
+---
 
-- This is the subsite of my blog for my notes.
+# Yang Qihang's Notes
 
-    **注意**：这是 **[杨启航的个人博客](https://yangqihang.dev)** 的**笔记分站**。
+Hi there. This is the dedicated subsite for my personal notes and technical documentation, structured hierarchically for easy reference. 
 
-- A different framework is used for this site to present notes in a more hierarchical way.
+For my chronological blog posts and main articles, please visit **[yangqihang.dev](https://yangqihang.dev)**.
 
-    在构建我的博客网站时，针对笔记分站，我采用了不同于主站的框架（MkDocs），更符合笔记结构化的特点。
+!!! info "中文概览"
+    这是杨启航的个人博客的笔记分站，用于整理结构化的技术笔记。如需访问我的主站博客，请前往 [yangqihang.dev](https://yangqihang.dev)。
 
-- For my main blog and chronological posts about things other than my notes, visit **[yangqihang.dev](https://yangqihang.dev)**.
+---
 
-    如果你想要回到我的博客主站点，请访问**[yangqihang.dev](https://yangqihang.dev)**。
+## Explore My Notes
 
-## Navigation of My Notes
+<div class="grid cards" markdown>
 
-* **Computer Science**
+-   __[💻 Computer Science](cs/index.md)__
+
+    ---
+
     * [Tooling](cs/tooling/index.md)
-    * [Programming](s/programming/index.md)
-    * [Theory](s/theory/index.md)
-* **Mathematics**
-    * [An index of my maths notes](math/index.md)
+    * [Programming](cs/programming/index.md)
+    * [Theory](cs/theory/index.md)
 
+-   __[📐 Mathematics](math/index.md)__
+
+    ---
+
+    * [Discrete Mathematics](math/index.md)
+
+</div>
