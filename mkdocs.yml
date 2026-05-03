@@ -1,1 +1,25 @@
-site_name: My Docs
+site_name: Notes - Qihang's Blog
+site_url: https://notes.yangqihang.dev
+site_author: Yang Qihang
+
+theme:
+  name: material
+  icon:
+    logo: material/console
+  features:
+    - navigation.tabs
+    - navigation.expand # Makes sidebar folders default to open
+
+markdown_extensions:
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+
+nav:
+  - Computer Science:
+    - Tooling: cs/tooling/index.md
+    - Programming: cs/programming/index.md
+    - Theory: cs/theory/index.md
+  - Mathematics: math/index.md
