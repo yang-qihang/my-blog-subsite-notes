@@ -10,7 +10,7 @@
 
 - For my main blog and chronological posts about things other than my notes, visit **[yangqihang.dev](https://yangqihang.dev)**.
 
-    如果你想要回到我的博客主站点，请访问**[yangqihang.dev](https://yangqihang，.dev)**。
+    如果你想要回到我的博客主站点，请访问**[yangqihang.dev](https://yangqihang.dev)**。
 
 ## Navigation of My Notes
 
