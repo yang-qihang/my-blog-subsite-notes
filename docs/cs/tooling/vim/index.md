@@ -24,7 +24,7 @@ But once you learned the essential of Vim and switch to one of the modern distro
 
 ### Part 2 Neovim / LazyVim Specialized Knowledge
 
-* **[Installing LazyVim](./lazyvim-and-neovim/notes/chap1-installation.md)**
+* **[Installing LazyVim](./lazyvim-and-neovim/notes/lazyvim-installation.md)**
 
 * **Configuring Lazyvim and NeoVim**
     * **[LazyVim Configuration](./lazyvim-and-neovim/lazynvim-setup.md)**

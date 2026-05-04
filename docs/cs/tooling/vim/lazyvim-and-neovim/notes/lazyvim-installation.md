@@ -1,16 +1,16 @@
 [← Back to Vim Directory](../../index.md){ .md-button }
 
-# Notes for lazyvim
+# Installing LazyVim
 
-**NOTE**: All the text under this directory are created to record the probles I encountered while configuring and using LazyVim. The way it is named and arranged is according to the book *LazyVim for Ambitious Developers*.
+## As a supplement to a book
 
-## Chapter 1 Introduction and Installation
+**NOTE**: I followed the book *LazyVim for Ambitious Developers* to install LazyVim. Below are my solutions to some problems I experienced while following the book's sections about installing LazyVim.
 
-### 1.8.2 Install Other Recommended Dependencies
+The corresponding instruction can be found in **1.8.2 Install Other Recommended Dependencies** in **Chapter 1 Introduction and Installation** in that book.
 
 In this list, `fzf` and `ripgrep` are able to be installed via `apt` directly. Yet, this approach doesn't work for the other two.
 
-#### Install `fd`
+## Install `fd`
 
 The package exists in Ubuntu, but it is named fd-find because the name fd was already taken by another linux utility.
 
@@ -23,7 +23,7 @@ mkdir -p ~/.local/bin
 ln -s $(which fdfind) ~/.local/bin/fd
 ```
 
-#### Install `lazygit`
+## Install `lazygit`
 
 Run this command block below to download and install Lazygit manually.
 
@@ -37,7 +37,7 @@ sudo install lazygit /usr/local/bin
 rm lazygit.tar.gz lazygit
 ```
 
-#### Verify Installation
+## Verify Installation
 Once you finish those two steps, check if they work:
 ```bash
 fd --version
