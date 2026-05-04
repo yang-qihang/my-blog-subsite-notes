@@ -8,8 +8,9 @@ Welcome to the Git knowledge base. This section covers everything from basic loc
 * **[Branching](./branching.md)**
 * **[Reversing Changes](./reversing-changes.md)**
 * **[Resolving Conflicts](resolving-conflicts.md)**
-* **[Other Advanced Tools](./advanced.md)**
 * **[Internal Mechanics](./internals.md)**
+* **[Advanced File-level Operations](./advanced-file-level-operations.md)**
+* **[Other Advanced Tools](./advanced.md)**
 
 ---
 
