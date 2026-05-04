@@ -12,12 +12,12 @@ The availability of `--continue`, `--skip`, and `--abort` depends entirely on wh
 
 | Git Command | `--continue` | `--skip` | `--abort` | Under the Hood / Why? |
 | :--- | :---: | :---: | :---: | :--- |
-| `git merge` | ✅* | ❌ | ✅ | **Single-State:** Merges two trees into one commit. You cannot "skip" a merge; you must complete it or `--abort`. <br>*(**\*Note:** `--continue` was only added in Git 2.12 for consistency. Historically, because a merge is just combining trees, you simply run standard `git commit` to finalize it).* |
+| `git merge` | ✅ | ❌ | ✅ | **Single-State:** Merges two trees into one commit. You cannot "skip" a merge; you must complete it or `--abort`. *(**Note:** `--continue` was only added in Git 2.12 for consistency. Historically, because a merge is just combining trees, you simply run standard `git commit` to finalize it).* |
 | `git rebase` | ✅ | ✅ | ✅ | **Sequential:** Reapplies a list of commits one by one. If a specific commit conflicts and you realize you don't need it, you can `--skip` that specific commit and move to the next. |
 | `git cherry-pick` | ✅ | ✅ | ✅ | **Sequential:** Exactly like rebase, it applies commits iteratively. You can `--skip` a problematic or redundant pick. |
 | `git revert` | ✅ | ✅ | ✅ | **Sequential:** Generates new commits that undo past commits. If undoing a specific commit causes a mess you don't care about, you can `--skip` it. |
 | `git stash pop/apply`| ❌ | ❌ | ❌ | **Working Directory Hack:** `stash` does not use the sequencer. If it conflicts, it dumps the conflict into your working tree and stops. There is no `--continue` or `--abort`. |
-| `git pull` | *Varies* | *Varies* | *Varies* | **Wrapper:** `pull` is just `git fetch` followed by either `git merge` or `git rebase`. The flags available depend entirely on which of those two it delegates to. |
+| `git pull` | *Varies* | *Varies* | *Varies* | **Wrapper:** `pull` is just `git fetch` followed by either `git merge` or `git rebase`. The flags available depend entirely on which of those two it delegates to. | 
 
 !!! Note
     Most sequencer commands also have a `--quit` flag, which stops the operation exactly where it is, leaving your working directory in the conflicted state without reverting back to the beginning like `--abort` does).

@@ -15,44 +15,34 @@
   width: 100%;
   height: 2px;
   background-color: var(--md-primary-fg-color);
-  margin-top: 0.3em;
+  margin-top: 0.1em;
   opacity: 0.2; /* Keeps it dim so it doesn't compete with your H2 blocks */
 }
 
-
-/* ==========================================================
-   2. MAJOR SECTIONS (H2 TERMINAL BLOCKS)
-========================================================== */
 /* ==========================================================
    2. MAJOR SECTIONS (H2 TERMINAL BLOCKS)
 ========================================================== */
 .md-typeset h2 {
-  /* Terminal Block Structure */
-  border-left: 6px solid var(--md-primary-fg-color);
-  padding-left: 0.6em;
+  /* Terminal Block Structure & Spacing */
   background: var(--md-code-bg-color);
-  padding-top: 0.3em;
-  padding-bottom: 0.3em;
+  border-left: 6px solid var(--md-primary-fg-color);
+  padding: 0.3em 0 0.3em 0.6em; /* top, right, bottom, left */
+  margin: 0.4em 0 0.5em; /* top, horizontal, bottom */
   
   /* Typography & Color */
   font-weight: 800; 
   color: var(--md-default-fg-color); 
-  
-  /* Spacing */
-  margin-top: 0.4em;    /* Dramatically reduced to tighten the gap from the content above */
-  margin-bottom: 0.5em; 
 }
 
 /* Pull the first H2 closer to the H1 title line */
 .md-typeset h1 + h2 {
-  margin-top: 1em; /* Reduces the gap from 2em down to 1em */
+  margin-top: 0; 
 }
 
 /* If you have a small paragraph intro before the first H2, keep it tight */
 .md-typeset h1 + p + h2 {
   margin-top: 1.2em; 
 }
-
 
 /* ==========================================================
    3. SUB-SECTIONS (H3 MONOSPACE LABELS)
@@ -61,14 +51,13 @@
   font-family: var(--md-code-font-family); 
   font-weight: 600;
   color: var(--md-primary-fg-color);
-  letter-spacing: 0.05em; /* Spreads the letters slightly */
+  letter-spacing: 0.05em; 
   text-transform: uppercase;
   font-size: 1.05em; 
-  margin-top: 1.8em;
-  border-bottom: 1px dashed var(--md-default-fg-color--lighter); /* Very subtle mechanical line */
+  margin-top: 0.8em; 
+  border-bottom: 1px dashed #64b5f6; /* <-- Crisp, blueprint light blue */
   padding-bottom: 0.2em;
 }
-
 
 /* ==========================================================
    4. TABLE OF CONTENTS (CLEAN HIERARCHY & SCROLL TRACKING)
@@ -89,8 +78,7 @@
 
 /* Deeply Nested Items (H4 and below): Further indentation */
 .md-sidebar--secondary .md-nav__list .md-nav__list .md-nav__list .md-nav__link {
-  font-size: 0.85em; 
-  margin-left: 1.6em; /* Pushes it further right */
+  margin-left: 1.6em; /* Pushes it further right (font-size inherited from above) */
 }
 
 /* Restore and force the active state highlight for scroll tracking */
@@ -103,19 +91,74 @@
 /* ==========================================================
    5. HORIZONTAL RULES (---) AND SPACING
 ========================================================== */
-/* Reduce the massive default margins on all horizontal lines */
+
+/* 1. Dramatically reduce the default margins on all horizontal lines */
 .md-typeset hr {
-  margin: 1.5em 0; /* Brings content closer to the top and bottom of the line */
+  margin: 0.8em 0; /* Reduced from 1.5em to tighten the whole area */
+  border-bottom: 1px dashed #64b5f6; /* <-- Matches the H3 light blue */
 }
 
-/* When a Terminal Block H2 immediately follows a line, pull it up tight */
+/* 2. Squeeze the gap when a list is right above a line */
+.md-typeset ul:has(+ hr),
+.md-typeset ol:has(+ hr) {
+  margin-bottom: 0.2em !important; /* Kills the list's bottom margin */
+}
+
+/* 3. Squeeze the gap when an H2 is right below a line */
+.md-typeset hr:has(+ h2) {
+  margin-bottom: 0.2em !important; /* Kills the line's bottom margin */
+}
+
+/* 4. When a Terminal Block H2 immediately follows a line, pull it up tight */
 .md-typeset hr + h2 {
-  margin-top: 0.8em; /* Overrides the default 2em gap, tucking the H2 under the line */
+  margin-top: 0.5em !important; /* Forces the H2 to tuck snugly under the line */
 }
 
-/* Cover the edge case where there might be a blank paragraph between them */
+/* 5. Cover the edge case where there might be a blank paragraph between them */
 .md-typeset hr + p + h2 {
-  margin-top: 1em; 
+  margin-top: 0.8em; 
 }
 
+/* ==========================================================
+   6. LIST SPACING (UL / OL) - AGGRESSIVE TIGHTENING
+========================================================== */
 
+/* 1. Squeeze the main container of the list */
+.md-typeset ul,
+.md-typeset ol {
+  margin-top: 0.5em;    /* Reduces the gap above the entire list */
+  margin-bottom: 0.5em; /* Reduces the gap below the entire list */
+}
+
+/* 2. Squeeze the gap BETWEEN individual list items */
+.md-typeset li {
+  margin-top: 0.2em; /* Brings items like 1, 2, and 3 much closer together */
+}
+
+/* 3. Force tight spacing when a list IMMEDIATELY follows a heading */
+.md-typeset h2 + ul,
+.md-typeset h2 + ol,
+.md-typeset h3 + ul,
+.md-typeset h3 + ol {
+  margin-top: 0.3em !important; /* The !important overrides MkDocs default overrides */
+}
+
+/* 4. Force tight spacing when a list follows a regular paragraph (Like in Section A) */
+
+/* Target the paragraph BEFORE the list to kill its default bottom margin */
+.md-typeset p:has(+ ul),
+.md-typeset p:has(+ ol) {
+  margin-bottom: 0.1em !important; 
+}
+
+/* Target the list AFTER the paragraph to ensure the top margin stays tight */
+.md-typeset p + ul,
+.md-typeset p + ol {
+  margin-top: 0 !important; 
+}
+
+/* 5. Handle "loose" lists (where items contain multiple lines/code, like Section C) */
+.md-typeset li > p {
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}

@@ -17,7 +17,7 @@ theme:
     - content.code.copy  # <--- Add this line here
     - navigation.path     # <--- Adds a breadcrumb trail (e.g., CS > Tooling > Git) at the top of the page
 #    - navigation.footer   # <--- Adds explicit "Previous" and "Next" buttons at the bottom of the page
-#   - navigation.instant
+#    - navigation.instant
 
 validation:
   nav:
