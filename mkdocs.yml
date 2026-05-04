@@ -53,10 +53,11 @@ extra_css:
 nav:
   - Home: index.md
   - CS:
+    - cs/index.md
     - Tooling:
       - cs/tooling/index.md
       - Git: cs/tooling/git/index.md
-      - Make: cs/tooling/make/index.md
+      - Build System: cs/tooling/build-system/index.md
       - Vim: cs/tooling/vim/index.md
     - Programming:
       - cs/programming/index.md

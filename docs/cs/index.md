@@ -21,7 +21,7 @@
 
     * [Git](tooling/git/index.md)
 
-    * [Make](tooling/make/index.md)
+    * [Build System](tooling/build-system/index.md)
 
     * [Vim](tooling/vim/index.md)
 

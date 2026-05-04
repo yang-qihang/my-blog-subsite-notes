@@ -2,6 +2,6 @@
 
 - [Git](git/index.md)
 
-- [Make](make/index.md)
+- [Build System](build-system/index.md)
 
 - [Vim](vim/index.md)

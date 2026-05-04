@@ -7,6 +7,7 @@ Welcome to the Git knowledge base. This section covers everything from basic loc
 * **[Configuration](./configuration.md)**
 * **[Branching](./branching.md)**
 * **[Reversing Changes](./reversing-changes.md)**
+* **[Resolving Conflicts](resolving-conflicts.md)**
 * **[Other Advanced Tools](./advanced.md)**
 * **[Internal Mechanics](./internals.md)**
 
