@@ -17,6 +17,7 @@ theme:
     - content.code.copy  # <--- Add this line here
     - navigation.path     # <--- Adds a breadcrumb trail (e.g., CS > Tooling > Git) at the top of the page
 #    - navigation.footer   # <--- Adds explicit "Previous" and "Next" buttons at the bottom of the page
+#   - navigation.instant
 
 validation:
   nav:
@@ -44,6 +45,7 @@ markdown_extensions:
 extra_javascript:
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - javascripts/mobile-search-fix.js
 
 extra_css:
   - stylesheets/extra.css
