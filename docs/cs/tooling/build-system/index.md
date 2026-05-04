@@ -6,11 +6,11 @@ This is my personal knowledge base for learning build automation systems of C/C+
 
 This section is divided into two main tracks:
 
-* **[1. Makefile](./makefile.md)**
+* **[1. Make](./make/index.md)**
 
     Low-level build automation.
 
-* **[2. CMake](./cmake.md)**
+* **[2. CMake](./cmake/index.md)**
 
     Cross-platform build generation.
 
