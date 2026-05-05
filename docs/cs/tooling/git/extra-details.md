@@ -46,7 +46,7 @@ During an **interactive rebase** *(Normal rebase can only be paused because of c
 
 * **Case B: The `CONFLICT` Pause**
 
-    *Git hit a wall trying to construct the *next* commit (e.g., `modify/delete` conflict).
+    Git hit a wall trying to construct the next commit (e.g., `modify/delete` conflict).
   
      1. Resolve the conflict (e.g., in this case it's `git rm -r public/`)
 

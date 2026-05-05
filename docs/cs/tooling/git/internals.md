@@ -31,13 +31,6 @@ When you run `git status`, Git performs a **3-Way Comparison**:
 ### 4. `git rm --cached`
 The command `git rm --cached` removes files from the staging area (Index) **without deleting them from the working directory**.
 
-It does not "make the file untracked" instantly.
-It **stages the transition** from "Tracked" to "Untracked."
-
-- **Before Commit:** The file is in a superposition (Staged Delete + Untracked).
-
-- **After Commit:** The HEAD updates. The file is gone from HEAD. The definition (In HEAD $\cup$ In Index) fails. **NOW** it is truly, 100% Untracked.
-
 ### 5. `git rm` commands
 
 1. `git rm file.txt`:
