@@ -6,29 +6,65 @@
 
 * **Interactive Patch Mode (`-p`)**
 
-    Commands like `git add -p <file>` and `git restore -p <file>` allow you to interactively stage or discard specific blocks of changes (hunks) rather than whole files.
+    To interactively stage or discard specific blocks of changes (hunks), you can use the following commands:
+    
+    - `git add -p <file>`
 
-    During this process, Git provides several options: `y` (yes, apply), `n` (no, skip), `q` (quit completely), `a` (apply this and all remaining), `d` (skip this and all remaining), and `e` (manually edit the hunk).
+    - `git restore -p <file>` 
+
+    During this process, several options are provided:
+
+    - `y` (yes, apply)
+
+    - `n` (no, skip)
+
+    - `q` (quit completely)
+
+    - `a` (apply this and all remaining)
+
+    - `d` (skip this and all remaining)
+
+    - `e` (manually edit the hunk).
 
 * **Manually Editing Hunks (`e`)**
 
-    Selecting `e` opens the raw patch in a text editor. Git determines actions based on the first character of each line: `+` (addition), `-` (deletion), or a space (unchanged context).
+    Selecting `e` opens the raw patch in a text editor. Git determines actions based on the first character of each line:
 
-    To prevent staging an addition, completely delete the `+` line from the patch. To prevent staging a deletion, replace the `-` with a single space to turn it into a context line. Context lines must remain perfectly intact for the patch to apply cleanly.
+    - `+` (addition)
 
-## 2. Precision Diffing
+    - `-` (deletion)
 
-* **Comparing Trees**
+    - a space (unchanged context).
 
-    Git's `diff` commands change based on which architectural trees are being compared.
+    The way you manually edit is as follows:
 
-    - `git diff` compares the Working Directory against the Index (unstaged changes).
+    - To prevent staging an addition, **completely delete the `+` line** from the patch.
 
-    - `git diff --staged` compares the Index against HEAD (changes ready to commit).
+    - To prevent staging a deletion, replace the `-` with a single space to turn it into a context line.
 
-    - `git diff HEAD` compares the Working Directory plus the Index against HEAD (all uncommitted changes).
+    - Context lines must remain **intact** for the patch to apply cleanly.
 
-## 3. Surgical History Inspection
+## 2. `git diff`
+
+- `git diff`: Worktree vs. Index 
+
+- `git diff --staged`: Index vs. HEAD 
+
+- `git diff <commit>`: Worktree vs. Specific Commit 
+
+- `git diff --staged <commit>`: Index vs. Specific Commit 
+
+- `git diff <commit_1> <commit_2>`: Commit vs. Commit 
+
+## 3. `git show`
+
+- `git show optional_commit`: Show changes made during the commit specified
+
+- `git show optional_commit:file_name`: peek at an old file in that commit
+
+- `git show optional_commit -- file_name`: see changes to a file during that commit
+
+## 4. Surgical History Inspection
 
 * **File-Level and Line-Level Tracing**
 
@@ -42,7 +78,7 @@
 
     `git blame -L` uses a space (e.g., `-L 10,20 main.c`) because `blame` only ever operates on a single file, making the file name a standard positional argument.
 
-## 4. Reading Unified Diff Formats
+## 5. Reading Unified Diff Formats
 
 * **Anatomy of a Patch**
 
@@ -50,7 +86,7 @@
 
     It includes the Commit Metadata (Hash, Author, Date, Message), the Diff Header (`a/` for the old file state, `b/` for the new file state), the Hunk Header coordinates (e.g., `@@ -3,1 +3,1 @@` showing the start line and number of lines extracted for both states), and the Payload (the actual `+` and `-` code changes).
 
-## 5. Revision Ranges and History Traversal
+## 6. Revision Ranges and History Traversal
 
 * **Navigating Ancestry (`~` and `^`)**
 
@@ -68,7 +104,7 @@
 
     When executing commands where a revision or branch name could be confused with a file name, appending `--` before the file path explicitly forces Git's parser to treat all subsequent arguments as files, preventing ambiguous argument errors.
 
-## 6. Daily Idioms (Quick Reference)
+## 7. Daily Idioms (Quick Reference)
 
 * **Review, stage, and commit a file in one seamless command:**
 

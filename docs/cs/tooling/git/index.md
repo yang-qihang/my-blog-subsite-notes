@@ -11,6 +11,7 @@ Welcome to the Git knowledge base. This section covers everything from basic loc
 * **[Internal Mechanics](./internals.md)**
 * **[Advanced File-level Operations](./advanced-file-level-operations.md)**
 * **[Other Advanced Tools](./advanced.md)**
+* **[Extra Details](./extra-details.md)**
 
 ---
 

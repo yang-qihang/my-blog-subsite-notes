@@ -10,6 +10,9 @@ Hi there. This is the dedicated subsite for my personal notes and technical docu
 
 For my chronological blog posts and main articles, please visit **[yangqihang.dev](https://yangqihang.dev)**.
 
+!!! info "Latest Build"
+    This site was last compiled on **{{ now().strftime('%Y-%m-%d %H:%M') }}**.
+
 !!! info "中文概览"
     这是杨启航的个人博客的笔记分站，用于整理结构化的技术笔记。如需访问我的主站博客，请前往 [yangqihang.dev](https://yangqihang.dev)。
 

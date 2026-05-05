@@ -69,3 +69,7 @@ nav:
       - math/index.md
       - Discrete Math: math/discrete-math/index.md
   - Back to Mainsite: https://yangqihang.dev
+
+plugins:
+  - search
+  - macros:
