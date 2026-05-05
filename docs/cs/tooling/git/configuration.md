@@ -7,6 +7,8 @@ Run the lines below in the command line to add them to the git configuration fil
 ```bash
 # This line makes `git log` print directly in the terminal and stay visible
 git config --global core.pager cat 
+# I am not used to the nano editor, so I change it to neovim.
+git config --global core.editor nvim
 
 # print out commit history
 git config --global alias.lg "log --oneline --graph --all -decorate"
