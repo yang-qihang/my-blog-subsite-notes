@@ -64,38 +64,44 @@ This combination is incredibly fast, lives entirely in your terminal, and integr
 
 **Setup Tip:**
 
-To integrate this into a LazyVim setup, you can add language servers like `verible` (for SystemVerilog/Verilog) or `vhdl_ls` (for VHDL) to get robust linting, autocompletion, and formatting right in your editor.
+Setup Tip:
+To integrate this into a LazyVim setup, you need to configure two things: Treesitter (using the systemverilog and vhdl parsers for syntax highlighting) and Language Servers (like `verible` and `vhdl_ls` for robust linting, autocompletion, and formatting right in your editor).
 
 To enable HDL support, create a new configuration file at the following path and insert the code below.
 
 ```lua
--- File: ~/.config/nvim/lua/plugins/hdl.lua
--- Description: Custom LazyVim configuration for Hardware Description Languages (Verilog/VHDL)
+-- ==============================================================================
+-- Description: Custom LazyVim configuration for Hardware Description Languages.
+--              Provides syntax highlighting, linting, and autocompletion 
+--              for Verilog, SystemVerilog, and VHDL.
+-- ==============================================================================
 
 return {
   -- 1. Treesitter: Provides AST-based syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      -- We use vim.list_extend instead of directly assigning a new table.
-      -- This defensively ensures we append to LazyVim's default parsers 
-      -- (like lua, markdown, c) rather than accidentally overwriting them.
+      -- Use vim.list_extend to safely append to LazyVim's default parser list 
+      -- without overwriting existing parsers (like lua, markdown, c).
       if type(opts.ensure_installed) == "table" then
         vim.list_extend(opts.ensure_installed, { 
-          "verilog", 
+          -- Note: The nvim-treesitter community deprecated the old "verilog" 
+          -- parser. Use "systemverilog" instead, which perfectly supports 
+          -- standard .v files as a superset.
+          "systemverilog",  
           "vhdl" 
         })
       end
     end,
   },
 
-  -- 2. LSP Config: Provides autocompletion, linting, and go-to-definition
+  -- 2. LSP Config: Provides autocompletion, live error checking, and go-to-definition
   {
     "neovim/nvim-lspconfig",
     opts = {
       -- LazyVim's lspconfig hooks into Mason automatically.
-      -- Adding servers here tells Mason to download the binaries if missing,
-      -- and tells Neovim to attach them when opening .v or .vhd files.
+      -- Declaring servers here tells Mason to download the binaries if missing,
+      -- and tells Neovim to attach them when opening .v, .sv, or .vhd files.
       servers = {
         verible = {}, -- Language server for Verilog / SystemVerilog
         vhdl_ls = {}, -- Language server for VHDL
