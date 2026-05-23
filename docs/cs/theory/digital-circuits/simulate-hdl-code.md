@@ -76,18 +76,23 @@ To enable HDL support, create a new configuration file at the following path and
 --              for Verilog, SystemVerilog, and VHDL.
 -- ==============================================================================
 
+-- 0. Filetype Mapping: Force Neovim to map .v files to SystemVerilog immediately.
+--    This ensures Treesitter attaches instantly when creating brand new files.
+vim.filetype.add({
+  extension = {
+    v = "systemverilog",
+    sv = "systemverilog",
+    vhd = "vhdl",
+  },
+})
+
 return {
   -- 1. Treesitter: Provides AST-based syntax highlighting
   {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
-      -- Use vim.list_extend to safely append to LazyVim's default parser list 
-      -- without overwriting existing parsers (like lua, markdown, c).
       if type(opts.ensure_installed) == "table" then
         vim.list_extend(opts.ensure_installed, { 
-          -- Note: The nvim-treesitter community deprecated the old "verilog" 
-          -- parser. Use "systemverilog" instead, which perfectly supports 
-          -- standard .v files as a superset.
           "systemverilog",  
           "vhdl" 
         })
@@ -99,12 +104,9 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      -- LazyVim's lspconfig hooks into Mason automatically.
-      -- Declaring servers here tells Mason to download the binaries if missing,
-      -- and tells Neovim to attach them when opening .v, .sv, or .vhd files.
       servers = {
-        verible = {}, -- Language server for Verilog / SystemVerilog
-        vhdl_ls = {}, -- Language server for VHDL
+        verible = {}, 
+        vhdl_ls = {}, 
       },
     },
   },
