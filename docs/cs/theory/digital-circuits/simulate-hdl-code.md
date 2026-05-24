@@ -246,19 +246,36 @@ gtkwave waveform.vcd &
 
 ### The VHDL Equivalent (GHDL)
 
-If you decide to do the labs in VHDL instead of Verilog, the workflow is conceptually identical, just with different syntax and terminal commands:
+If you decide to do the labs in VHDL instead of Verilog, the workflow is conceptually identical, just with different syntax and terminal commands.
 
-```bash
-# 1. Analyze (compile) the files
-ghdl -a half_adder.vhd
-ghdl -a half_adder_tb.vhd
-# 2. Elaborate (build the executable)
-ghdl -e half_adder_tb
-# 3. Run and generate the waveform
-ghdl -r half_adder_tb --vcd=waveform.vcd
-# 4. View
-gtkwave waveform.vcd
+#### An Important Distinction
+**But before we write the code and start logic simulation, there's still some important distinction to notice.**
+
+Unlike Verilog, which is relatively happy to compile a single isolated file, VHDL is heavily reliant on **"Libraries"** and **"Workspaces"**.
+
+When `vhdl_ls` starts up, it immediately scans your folder structure looking for a **project root** so it knows how your different files connect to each other. 
+
+If you just created a single `.vhd` file in a random folder, the LSP server panicked because it couldn't find a workspace file (the `vhdl_ls.toml` it will usually mention in such cases).
+
+To fix this, you just need to drop a tiny configuration file into the folder where you are saving your textbook exercises. This file tells the LSP, *"Treat this folder as the project root, and compile all the `.vhd` files here into the default `defaultlib` library."*
+
+```toml
+# vhdl_ls.toml
+# This tells the VHDL Language Server how to read your textbook exercises
+
+# We map all .vhd files in this folder to the standard "work" library
+[libraries]
+defaultlib.files = [
+  '*.vhd'
+]
 ```
+
+**Note**: Don't use `work` as the name of the library. This is a specific quirk of newer versions of `vhdl_ls` (which is powehed by the `rust_hdl` engine).
+
+In the VHDL standard, `work` is a highly protected, strictly defined keyword. It represents the **"current working library."** Because it is implicitly defined by the compiler, explicitly trying to map files to it in a configuration file causes modern versions of the LSP to throw a conflict error.
+
+The fix is exactly what the hint suggests: we just give our files a **generic library name** (like `defaultlib`), and the VHDL tools will automatically map that to the active work library during compilation anyway.
+
 
 #### File 1: `half_adder.vhd` (The Circuit)
 
@@ -283,7 +300,7 @@ begin
 end architecture behavior;
 ```
 
-File 2: `half_adder_tb.vhd` (The Testbench)
+#### File 2: `half_adder_tb.vhd` (The Testbench)
 
 ```vhdl
 library ieee;
@@ -339,6 +356,28 @@ begin
     end process;
 end architecture sim;
 ```
+
+#### The commands you need to run
+
+```bash
+# 1. Analyze (compile) the files
+ghdl -a half_adder.vhd
+ghdl -a half_adder_tb.vhd
+# 2. Elaborate (build the executable)
+ghdl -e half_adder_tb
+# 3. Run and generate the waveform
+ghdl -r half_adder_tb --vcd=waveform.vcd
+# 4. View
+gtkwave waveform.vcd
+```
+
+**Note**:
+
+- When you run `ghdl -a ...`, GHDL is interacting with your Linux file system. It reads the text file and **compiles the logic into its internal database** (e.g. the filename will look like `work-obj93.cf`).
+
+- When you run `ghdl -e ...`, GHDL stops looking at your Linux files and starts looking inside its **internal database**. It is searching for the specific VHDL entity name you defined in the code.
+
+    This means that you need to pass the **entity name** instead of the **file name** to the elaborate and run command regardless of what the `.vhd` file is called! Or the error `cannot find entity or configuration` will happen.
 
 ## 3. A Difference between VHDL and Verilog about dump commands
 
