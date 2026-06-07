@@ -5,3 +5,5 @@
 - [Build System](build-system/index.md)
 
 - [Vim](vim/index.md)
+
+- [Ubuntu](ubuntu/index.md)

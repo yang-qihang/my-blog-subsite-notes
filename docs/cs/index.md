@@ -9,6 +9,8 @@
 
     * [C](programming/c/index.md)
 
+    * [C++](./programming/cpp/index.md)
+
 -   __[🧪 Theory](theory/index.md)__
 
     ---
@@ -24,5 +26,7 @@
     * [Build System](tooling/build-system/index.md)
 
     * [Vim](tooling/vim/index.md)
+
+    * [Ubuntu](tooling/ubuntu/index.md)
 
 </div>

@@ -43,7 +43,6 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
 
 extra_javascript:
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - javascripts/mobile-search-fix.js
 
@@ -59,9 +58,11 @@ nav:
       - Git: cs/tooling/git/index.md
       - Build System: cs/tooling/build-system/index.md
       - Vim: cs/tooling/vim/index.md
+      - Ubuntu: cs/tooling/ubuntu/index.md
     - Programming:
       - cs/programming/index.md
       - C: cs/programming/c/index.md
+      - C++: cs/programming/cpp/index.md
     - Theory:
       - cs/theory/index.md
       - Digital Circuit: cs/theory/digital-circuits/index.md
