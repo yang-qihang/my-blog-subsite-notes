@@ -24,9 +24,9 @@ When you run `git status`, Git performs a **3-Way Comparison**:
 
 1. **HEAD vs. Index:** Checks for **Staged** changes (New, Modified, Deleted).
 
-2. **Index vs. Worktree:** Checks for **Unstaged** changes.
+2. **Index vs. Worktree:** Check every item in the Index against the working directory to see if there are unstaged changes. 
 
-3. **Worktree vs. Index:** Checks for **Untracked** files.
+3. **Worktree vs. Index:** Checks for files that exist in the working tree but not in the Index.
 
 ### 4. `git rm --cached`
 The command `git rm --cached` removes files from the staging area (Index) **without deleting them from the working directory**.

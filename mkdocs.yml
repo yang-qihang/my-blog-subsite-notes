@@ -56,7 +56,10 @@ nav:
     - Tooling:
       - cs/tooling/index.md
       - Git: cs/tooling/git/index.md
-      - Build System: cs/tooling/build-system/index.md
+      - Build System:
+        - cs/tooling/build-system/index.md
+        - Make: cs/tooling/build-system/make/index.md
+        - CMake: cs/tooling/build-system/cmake/index.md
       - Vim: cs/tooling/vim/index.md
       - Ubuntu: cs/tooling/ubuntu/index.md
     - Programming:

@@ -1,3 +1,5 @@
+[← Back to Git Directory](./index.md){ .md-button }
+
 # Details During A Rebase
 
 When you want to perform a `rebase`, there are many specific details to pay attention to.

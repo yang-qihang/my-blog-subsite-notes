@@ -134,8 +134,11 @@ List all branches to confirm the exact names of your local and remote-tracking b
 ```shell
 git branch -a # Lists both local and remote-tracking branches
 ```
+
 - **Local**: `feature/vision`
+
 - **Remote-tracking**: `origin/feature/vision`
+
 ### 3. Delete the Local Branch
 #### Option A: Safe Delete (Recommended)
 Git will check if the branch has been fully merged into your current branch. If not, it will throw an error to prevent data loss.
